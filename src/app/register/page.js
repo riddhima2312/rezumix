@@ -190,28 +190,34 @@ export default function Register() {
                                     className="w-full bg-[#050505] border border-white/10 rounded-xl py-3 pl-12 text-white"
                                 />
                             </div>
-
+                            
                             {/* PASSWORD WITH TOGGLE */}
-                            <div className="relative">
-                                <Lock className="absolute left-4 top-3.5 text-slate-500 w-5 h-5" />
+<div className="space-y-2">
+    <label className="text-xs font-medium text-slate-300 ml-1 uppercase tracking-wider">
+        Password
+    </label>
 
-                                <input
-                                    type={showPassword ? "text" : "password"}
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    placeholder="Password"
-                                    className="w-full bg-[#050505] border border-white/10 rounded-xl py-3 pl-12 pr-12 text-white"
-                                />
+    <div className="relative group">
+        <Lock className="absolute left-4 top-3.5 w-5 h-5 text-slate-500 group-focus-within:text-blue-400 transition-colors" />
 
-                                <button
-                                    type="button"
-                                    onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-4 top-3 text-slate-400 hover:text-white"
-                                >
-                                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                                </button>
-                            </div>
+        <input
+            type={showPassword ? "text" : "password"}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Create a secure password"
+            required
+            className="w-full bg-[#050505] border border-white/10 rounded-xl py-3 pl-12 pr-12 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all"
+        />
 
+        <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-4 top-3.5 text-slate-500 hover:text-blue-400 transition-colors"
+        >
+            {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+        </button>
+    </div>
+</div>
                             {/* ERROR / SUCCESS */}
                             {error && <p className="text-red-400 text-sm">{error}</p>}
                             {success && <p className="text-green-400 text-sm">{success}</p>}
